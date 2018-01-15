@@ -77,12 +77,8 @@ function logIn (request, reply) {
     if (!user.validatePassword(credentials.password)) {
       return reply.unauthorized('Password invalid');
     }
-
-    const token = getToken(user.id);
-
-    reply({
-      token: token
-    });
+    console.log("TEEEST", user);
+    reply().state('userId', user._id).redirect("/todolist");
   })
   .catch((err) => {
     reply.badImplementation(err.message);

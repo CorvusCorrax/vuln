@@ -17,7 +17,7 @@ module.exports = TodoController;
 
 // [GET] /todo
 function list (request, reply) {
-  const userId = request.auth.credentials.id;
+  const userId = request.params.userId;
 
   this.model.findAsync({owner: userId})
   .then((todos) => {
@@ -30,7 +30,7 @@ function list (request, reply) {
 
 // [GET] /todo/{id}
 function read (request, reply) {
-  const userId = request.auth.credentials.id;
+  const userId = request.params.userId;
   const id = request.params.id;
 
   this.model.findOneAsync({_id: id, owner: userId})
@@ -49,7 +49,7 @@ function read (request, reply) {
 
 // [POST] /todo
 function create (request, reply) {
-  const userId = request.auth.credentials.id;
+  const userId = request.params.userId;
   const payload = request.payload;
 
   payload.owner = userId;
@@ -65,7 +65,7 @@ function create (request, reply) {
 
 // [PUT] /todo/{id}
 function update (request, reply) {
-  const userId = request.auth.credentials.id;
+  const userId = request.params.userId;
   const id = request.params.id;
   const payload = request.payload;
 
@@ -80,7 +80,7 @@ function update (request, reply) {
 
 // [DELETE] /todo/{id}
 function destroy (request, reply) {
-  const userId = request.auth.credentials.id;
+  const userId = request.params.userId;
   const id = request.params.id;
 
   this.model.removeAsync({_id: id, owner: userId})

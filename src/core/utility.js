@@ -17,7 +17,6 @@ exports.register = (server, options, next) => {
         register: require(route)
       };
     });
-    console.log('MJIGOUYGV : ', registerRoutes);
 
     server.register(registerRoutes, (err) => {
       if (err) {
