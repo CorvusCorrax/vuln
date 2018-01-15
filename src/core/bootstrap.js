@@ -76,8 +76,13 @@ function registerToServer (plugins) {
       if (err) {
         return reject(err);
       }
+      Server.register(require('inert'), (err) => {
+        if (err) {
+          return reject(err);
+        }
 
-      return resolve();
+        return resolve();
+      });
     });
   });
 }

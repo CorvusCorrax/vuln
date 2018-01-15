@@ -22,6 +22,7 @@ exports.register = (server, options, next) => {
       method: 'GET',
       path: '/user/{id}',
       config: {
+        auth: false,
         handler: controller.read,
         validate: Validator.read()
       }
@@ -48,6 +49,7 @@ exports.register = (server, options, next) => {
       method: 'PUT',
       path: '/user/{id?}',
       config: {
+        auth: false,
         handler: controller.update,
         validate: Validator.update()
       }
@@ -56,6 +58,7 @@ exports.register = (server, options, next) => {
       method: 'DELETE',
       path: '/user/{id?}',
       config: {
+        auth: false,
         handler: controller.destroy,
         validate: Validator.destroy()
       }

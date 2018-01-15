@@ -71,11 +71,11 @@ function logIn (request, reply) {
   this.model.findOneAsync({email: credentials.email})
   .then((user) => {
     if (!user) {
-      return reply.unauthorized('Email or Password invalid');
+      return reply.unauthorized('Email invalid');
     }
 
     if (!user.validatePassword(credentials.password)) {
-      return reply.unauthorized('Email or Password invalid');
+      return reply.unauthorized('Password invalid');
     }
 
     const token = getToken(user.id);

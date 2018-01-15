@@ -13,6 +13,7 @@ exports.register = (server, options, next) => {
       method: 'GET',
       path: '/todo',
       config: {
+        auth: false,
         handler: controller.list,
         validate: Validator.list()
       }
@@ -21,6 +22,7 @@ exports.register = (server, options, next) => {
       method: 'GET',
       path: '/todo/{id}',
       config: {
+        auth: false,
         handler: controller.read,
         validate: Validator.read()
       }
@@ -29,6 +31,7 @@ exports.register = (server, options, next) => {
       method: 'POST',
       path: '/todo',
       config: {
+        auth: false,
         handler: controller.create,
         validate: Validator.create()
       }
@@ -37,6 +40,7 @@ exports.register = (server, options, next) => {
       method: 'PUT',
       path: '/todo/{id?}',
       config: {
+        auth: false,
         handler: controller.update,
         validate: Validator.update()
       }
@@ -45,6 +49,7 @@ exports.register = (server, options, next) => {
       method: 'DELETE',
       path: '/todo/{id?}',
       config: {
+        auth: false,
         handler: controller.destroy,
         validate: Validator.destroy()
       }

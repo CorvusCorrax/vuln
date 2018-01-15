@@ -25,11 +25,12 @@
     "hapi": "11.1.2",
     "hapi-auth-jwt2": "5.2.1",
     "hapi-boom-decorators": "1.0.2",
+    "inert": "~4.0.0",
     "joi": "6.9.0",
     "jsonwebtoken": "5.4.1",
-    "lodash": "4.5.1",
     "k7": "1.x.x",
     "k7-mongoose": "1.x.x",
+    "lodash": "4.5.1",
     "shortid": "2.2.4"
   },
   "devDependencies": {

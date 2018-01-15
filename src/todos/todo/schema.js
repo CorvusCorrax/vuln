@@ -34,8 +34,6 @@ function create () {
     payload: {
       name: Joi
         .string()
-        .min(1)
-        .max(30)
         .trim()
         .required(),
       checked: Joi
@@ -58,8 +56,6 @@ function update () {
     payload: {
       name: Joi
         .string()
-        .min(1)
-        .max(30)
         .trim()
         .optional(),
       checked: Joi

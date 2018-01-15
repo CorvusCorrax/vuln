@@ -14,7 +14,7 @@ exports.register = (server, options, next) => {
 };
 
 exports.register.attributes = {
-  name: 'access',
+  name: 'front',
   version: '1.0.0'
 };
 
