@@ -4,7 +4,7 @@ const Promise = require('bluebird');
 
 const bcrypt = require('bcryptjs');
 const shortid = require('shortid');
-const mongoose = require('k7-mongoose').mongoose;
+const mongoose = require('k7-mongoose').mongoose();
 
 const Schema = new mongoose.Schema({
   name: {
