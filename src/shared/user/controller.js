@@ -55,9 +55,7 @@ function create (request, reply) {
   .then((user) => {
     const token = getToken(user.id);
 
-    reply({
-      token: token
-    }).code(201);
+    reply().redirect("/login");
   })
   .catch((err) => {
     reply.badImplementation(err.message);

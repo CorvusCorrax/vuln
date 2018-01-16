@@ -17,8 +17,7 @@ module.exports = TodoController;
 
 // [GET] /todo
 function list (request, reply) {
-  const userId = request.params.userId;
-
+  const userId = request.url.query.userId;
   this.model.findAsync({owner: userId})
   .then((todos) => {
     reply(todos);
@@ -56,7 +55,7 @@ function create (request, reply) {
 
   this.model.createAsync(payload)
   .then((todo) => {
-    reply(todo).code(201);
+    reply().redirect("/todolist");
   })
   .catch((err) => {
     reply.badImplementation(err.message);

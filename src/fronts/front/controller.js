@@ -20,11 +20,16 @@ function sign_in (request, reply) {
 
 function todolist (request, reply) {
   var req = require('request');
-  req.post({url: 'http://localhost:3000/todolist', form: {userId: request.state['meinData']}}, function (error, response, body) {
-    console.log('error:', error); // Print the error if one occurred
-    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+  var fs = require('fs');
+  req.get('http://localhost:3000/todo?userId=' + request.state['meinData'], function (error, response, body) {
+    body = JSON.parse(body);
     console.log('body:', body); // Print the HTML for the Google homepage.
-    reply.file(__dirname + "/../html/todo.html");
+    var res = '';
+    for (var i = 0; i < body.length; ++i) {
+      res += body[i].name + '<br>';
+    }
+    res = fs.readFileSync(__dirname + "/../html/todo_top.html") + res + '<br>' + fs.readFileSync(__dirname + "/../html/todo_bot.html");
+    reply(res);
   });
 }
 
