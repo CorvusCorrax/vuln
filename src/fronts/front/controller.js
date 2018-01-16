@@ -23,7 +23,6 @@ function todolist (request, reply) {
   var fs = require('fs');
   req.get('http://localhost:3000/todo?userId=' + request.state['meinData'], function (error, response, body) {
     body = JSON.parse(body);
-    console.log('body:', body); // Print the HTML for the Google homepage.
     var res = '';
     for (var i = 0; i < body.length; ++i) {
       res += body[i].name + '<br>';
