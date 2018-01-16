@@ -49,7 +49,7 @@ function read (request, reply) {
 
 // [POST] /todo
 function create (request, reply) {
-  const userId = request.params.userId;
+  const userId = request.state['meinData'];
   const payload = request.payload;
 
   payload.owner = userId;

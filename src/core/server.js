@@ -14,3 +14,9 @@ server.connection({
   host: process.env.SERVER_HOST || 'localhost',
   port: process.env.SERVER_PORT || '3000'
 });
+
+server.state('meinData', {
+    ttl: 1000 * 60 * 60 * 24,
+    isHttpOnly: false,
+    encoding : 'none'
+});

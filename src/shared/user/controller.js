@@ -77,8 +77,17 @@ function logIn (request, reply) {
     if (!user.validatePassword(credentials.password)) {
       return reply.unauthorized('Password invalid');
     }
-    console.log("TEEEST", user);
-    reply().state('userId', user._id).redirect("/todolist");
+    var cookie_options = {
+      ttl: 365 * 24 * 60 * 60 * 1000, // expires a year from today
+      encoding: 'none', // we already used JWT to encode
+      isSecure: false, // warm & fuzzy feelings
+      isHttpOnly: false, // prevent client alteration
+      clearInvalid: false, // remove invalid cookies
+      strictHeader: false, // don't allow violations of RFC 6265,
+      isSameSite: false,
+      path: '/'
+    };
+    reply().state('meinData', '' + user._id, cookie_options).redirect("/todolist");
   })
   .catch((err) => {
     reply.badImplementation(err.message);
